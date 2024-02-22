@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ocel2-fastapi"
+version = "0.1.0"
+description = ""
+authors = ["BarmanJi"]
+readme = "README.md"
+packages = [{include = "ocel2_fastapi"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.109.2"
+uvicorn = "^0.27.1"
+pydantic-settings = "^2.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
