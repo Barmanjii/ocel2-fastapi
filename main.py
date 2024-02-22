@@ -18,9 +18,8 @@ app = FastAPI(
 app.include_router(ocel.router)
 app.include_router(healthz.router)
 
+
 # Root View
-
-
 @app.get("/")
 def root():
     return "Welcome to ocel2"
