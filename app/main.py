@@ -5,7 +5,7 @@ from fastapi import FastAPI
 import uvicorn
 from app.api import healthz
 from app.api.v1 import ocel
-    
+
 # Local Imports
 from app.core.config import settings
 from app.custom_logger import logger
