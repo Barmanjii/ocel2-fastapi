@@ -4,7 +4,7 @@ from fastapi import FastAPI
 # Uvicorn Import
 import uvicorn
 from app.api import healthz
-from app.api.v1 import ocel
+from app.api.v1.v1_router import v1_router
 
 # Local Imports
 from app.core.config import settings
@@ -20,14 +20,14 @@ app = FastAPI(
 )
 
 
-app.include_router(ocel.router)
 app.include_router(healthz.router)
+app.include_router(v1_router, prefix=settings.API_V1_STR)
 
 
 # Root View
 @app.get("/")
 def root():
-    return "Welcome to ocel2"
+    return "Welcome to ocel2-fastapi"
 
 
 # Help you debug if you want to run it without VS code debugger
