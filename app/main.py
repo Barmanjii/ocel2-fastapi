@@ -9,6 +9,10 @@ from app.api.v1 import ocel
 # Local Imports
 from app.core.config import settings
 from app.custom_logger import logger
+from app.db.session import SessionLocal
+
+# Starting the database session
+session = SessionLocal()
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
