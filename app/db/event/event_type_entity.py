@@ -1,5 +1,5 @@
 # SQL-Alchemy Imports
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, Integer, String
 
 # Local Backend Import
 from .base import Base
