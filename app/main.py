@@ -3,15 +3,15 @@ from fastapi import FastAPI
 
 # Uvicorn Import
 import uvicorn
-from app.api import healthz
-from app.api.v1.v1_router import v1_router
 
 # Local Imports
-from app.core.config import settings
+from app.api import healthz
 from app.custom_logger import logger
+from app.core.config import settings
 from app.db.session import SessionLocal
+from app.api.v1.v1_router import v1_router
 
-# Starting the database session
+# Starting the database local session
 session = SessionLocal()
 
 app = FastAPI(
