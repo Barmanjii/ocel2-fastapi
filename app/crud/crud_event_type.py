@@ -9,7 +9,7 @@ from app.db.entity.event_type_entity import EventTypeEntity
 from app.models.request_model import EventTypeModel
 
 
-class CRUDCompany:
+class CRUDEventType:
     def create(self, db: Session, obj_in: EventTypeModel) -> EventTypeEntity:
         try:
             db_event_type = EventTypeEntity(
@@ -24,4 +24,4 @@ class CRUDCompany:
             return e
 
 
-companyRepo = CRUDCompany()
+eventType = CRUDEventType()
