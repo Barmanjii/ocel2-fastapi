@@ -14,4 +14,7 @@ class EventAttributeEntity(Base):
         ForeignKey("event_type.event_type_id"), nullable=False
     )
     name = Column(String(255), default="")
-    event_type: Mapped["EventTypeEntity"] = relationship(back_populates="event_attribute")
+    event_type: Mapped["EventTypeEntity"] = relationship(
+        back_populates="event_attribute"
+    )
+    event_attribute_value = relationship("EventAttributeValueEntity")

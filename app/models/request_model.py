@@ -27,7 +27,12 @@ class EventAttributeEntity(BaseModel):
     name: str
 
 
+class EventAttributeValueEntity(BaseModel):
+    value: dict
+
+
 class RequestModel(BaseModel):
     event: Event
     event_type: EventType
     event_attribute: EventAttributeEntity
+    event_attribute_value: EventAttributeValueEntity

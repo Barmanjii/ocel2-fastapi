@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 # Local Backend Imports
 from app.models.request_model import RequestModel
-from app.db.entity.qualifier import qualifierEntity
+from app.db.entity.qualifier import QualifierEntity
 from app.db.entity.event_entity import EventEntity
 from app.db.entity.object_entity import ObjectEntity
 from app.db.entity.event_type_entity import EventTypeEntity
@@ -41,6 +41,14 @@ class CRUDRequest:
                 name=obj_in.event_attribute.name,
             )
             db.add(db_event_attribute)
+            db.flush()
+
+            db_event_attribute_value = EventAttributeValueEntity(
+                event_attribute_id=db_event_attribute.event_attribute_id,
+                event_id=db_event.event_id,
+                value=obj_in.event_attribute_value.value,
+            )
+            db.add(db_event_attribute_value)
             db.flush()
 
             db.commit()

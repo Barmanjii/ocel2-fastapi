@@ -16,6 +16,4 @@ class EventTypeEntity(Base):
     name = Column(String(255), default="")
 
     event: Mapped[List["EventEntity"]] = relationship(back_populates="event_type")
-    event_attribute: Mapped[List["EventAttributeEntity"]] = relationship(
-        back_populates="event_type"
-    )
+    event_attribute = relationship("EventAttributeEntity")
