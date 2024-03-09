@@ -1,38 +1,48 @@
 # Pydantic Import
 from datetime import datetime
 from pydantic import BaseModel
+from typing import List
 
 
-# class RequestModel(BaseModel):
-#     event_type_name: str | None = ""
-#     event_attribute_name: str | None = ""
-#     event_attribute_value_value: dict | None = {}
+class EventAttribute(BaseModel):
+    name: str
 
-#     object_type_name: str | None = ""
-#     object_attribute_name: str | None = ""
-#     object_attribute_value_value: dict | None = {}
 
-#     qualifier_value: dict | None = {}
+class EventAttributeValue(BaseModel):
+    value: dict
+
+
+class Qualifier(BaseModel):
+    value: dict
 
 
 class Event(BaseModel):
     timestamp: datetime
+    attribute_values: List[EventAttributeValue]
+    relationships: List[Qualifier]
 
 
 class EventType(BaseModel):
     name: str
+    attributes: List[EventAttribute]
 
 
-class EventAttributeEntity(BaseModel):
+class ObjectAttribute(BaseModel):
     name: str
 
 
-class EventAttributeValueEntity(BaseModel):
+class ObjectType(BaseModel):
+    name: str
+    attributes: List[ObjectAttribute]
+
+
+class ObjectAttributeValue(BaseModel):
+    timestamp: datetime
     value: dict
 
 
 class RequestModel(BaseModel):
-    event: Event
-    event_type: EventType
-    event_attribute: EventAttributeEntity
-    event_attribute_value: EventAttributeValueEntity
+    event_types: List[EventType]
+    object_types: List[ObjectType]
+    events: List[Event]
+    objects: List[ObjectAttributeValue]
