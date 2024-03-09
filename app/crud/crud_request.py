@@ -23,10 +23,26 @@ class CRUDRequest:
         try:
             db.begin()
             db_event_type = EventTypeEntity(
-                name=obj_in.event_type_name,
+                name=obj_in.event_type.name,
             )
 
             db.add(db_event_type)
+            db.flush()
+
+            db_event = EventEntity(
+                event_type_id=db_event_type.event_type_id,
+                timestamp=obj_in.event.timestamp,
+            )
+            db.add(db_event)
+            db.flush()
+
+            db_event_attribute = EventAttributeEntity(
+                event_type_id=db_event_type.event_type_id,
+                name=obj_in.event_attribute.name,
+            )
+            db.add(db_event_attribute)
+            db.flush()
+
             db.commit()
             return
         except Exception as e:
