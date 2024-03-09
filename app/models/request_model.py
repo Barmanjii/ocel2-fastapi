@@ -1,18 +1,14 @@
-# Local Backend Imports
-from .camel_model import CamelModel
+# Pydantic Import
+from pydantic import BaseModel
 
 
-class RequestModel(CamelModel):
-    event_id: int
-    event_type_id: int
-    timestamp: str
-    event_attribute_id: int
-    event_attribute_value_id: int
-    object_id: int
-    object_attribute_id: int
-    object_attribute_value_id: int
-    qualifier_id: int
+class RequestModel(BaseModel):
+    event_type_name: str | None = ""
+    event_attribute_name: str | None = ""
+    event_attribute_value_value: dict | None = {}
 
+    object_type_name: str | None = ""
+    object_attribute_name: str | None = ""
+    object_attribute_value_value: dict | None = {}
 
-class EventTypeModel(CamelModel):
-    name: str | None = ""
+    qualifier_value: dict | None = {}

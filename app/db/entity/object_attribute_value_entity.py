@@ -15,5 +15,5 @@ class ObjectAttributeValueEntity(Base):
     object_attribute_id = Column(
         ForeignKey("object_attribute.object_attribute_id"), nullable=False
     )
-    timestamp = Column(pg.TIMESTAMP(timezone=True), nullable=False, default=func.now())
+    timestamp = Column(pg.TIMESTAMP(), nullable=False, default=func.now())
     value = Column(JSON, default={})

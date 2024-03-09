@@ -5,8 +5,8 @@ from sqlalchemy import Column, JSON, Integer
 from .base import Base
 
 
-class QualiferEntity(Base):
-    __tablename__ = "qualifer"
+class qualifierEntity(Base):
+    __tablename__ = "qualifier"
 
-    qualifer_id = Column(Integer, primary_key=True)
+    qualifier_id = Column(Integer, primary_key=True)
     value = Column(JSON, default={})

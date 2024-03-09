@@ -12,4 +12,4 @@ class EventEntity(Base):
 
     event_id = Column(Integer, primary_key=True)
     event_type_id = Column(ForeignKey("event_type.event_type_id"), nullable=False)
-    timestamp = Column(pg.TIMESTAMP(timezone=True), nullable=False, default=func.now())
+    timestamp = Column(pg.TIMESTAMP(), nullable=False, default=func.now())
