@@ -76,6 +76,14 @@ class CRUDRequest:
             db.add(db_object)
             db.flush()
 
+            db_event_object_relationship = EventObjectRelationshipEntity(
+                event_id=db_event.event_id,
+                object_id=db_object.object_id,
+                qualifier_id=db_qualifier.qualifier_id,
+            )
+            db.add(db_event_object_relationship)
+            db.flush()
+
             db_object_attribute_value = ObjectAttributeValueEntity(
                 object_attribute_id=db_object_attribute.object_attribute_id,
                 object_id=db_object.object_id,
@@ -83,6 +91,14 @@ class CRUDRequest:
                 value=obj_in.objects[0].value,
             )
             db.add(db_object_attribute_value)
+            db.flush()
+
+            db_object_relationship = ObjectRelationshipEntity(
+                object_parent_id=db_object.object_id,
+                object_child_id=db_object.object_id,
+                qualifier_id=db_qualifier.qualifier_id,
+            )
+            db.add(db_object_relationship)
             db.flush()
 
             db.commit()
