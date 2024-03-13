@@ -21,7 +21,7 @@ class ObjectAttributeValueEntity(Base):
     timestamp = Column(pg.TIMESTAMP(), nullable=False, default=func.now())
     value = Column(JSON, default={})
 
-    object = relationship("ObjectEntity", back_populates="Object_attribute_value")
+    object = relationship("ObjectEntity", back_populates="object_attribute_value")
 
     object_attribute = relationship(
         "ObjectAttributeEntity", back_populates="object_attribute_value"
