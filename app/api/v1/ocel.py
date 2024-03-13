@@ -12,10 +12,10 @@ router = APIRouter(prefix="/ocel2", tags=["Ocel2"])
 
 
 @router.post("/")
-def test(request_model: RequestModel, db: session = Depends(deps.get_db)):
+async def test(request_model: RequestModel, db: session = Depends(deps.get_db)):
     try:
-        req = requestObj.create(obj_in=request_model, db=db)
-        logger.info("Worked!!")
+        req = await requestObj.create(obj_in=request_model, db=db)
+        logger.info("Successfully Pushed the data into the DB")
         return "Done"
     except Exception as e:
         logger.error(f"Exception While testing : {str(e)}")
