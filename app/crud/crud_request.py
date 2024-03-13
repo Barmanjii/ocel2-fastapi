@@ -51,20 +51,39 @@ class CRUDRequest:
             db.add(db_object_attribute)
             db.flush()
 
-            # db_event = EventEntity(
-            #     event_type_id=db_event_type.event_type_id,
-            #     timestamp=obj_in.event_types,
-            # )
-            # db.add(db_event)
-            # db.flush()
+            db_event = EventEntity(
+                event_type_id=db_event_type.event_type_id,
+                timestamp=obj_in.events[0].timestamp,
+            )
+            db.add(db_event)
+            db.flush()
 
-            # db_event_attribute_value = EventAttributeValueEntity(
-            #     event_attribute_id=db_event_attribute.event_attribute_id,
-            #     event_id=db_event.event_id,
-            #     value=obj_in.event_attribute_value.value,
-            # )
-            # db.add(db_event_attribute_value)
-            # db.flush()
+            db_event_attribute_value = EventAttributeValueEntity(
+                event_attribute_id=db_event_attribute.event_attribute_id,
+                event_id=db_event.event_id,
+                value=obj_in.events[0].attribute_values[0].value,
+            )
+            db.add(db_event_attribute_value)
+            db.flush()
+
+            db_qualifier = QualifierEntity(
+                value=obj_in.events[0].relationships_qualifer[0].value,
+            )
+            db.add(db_qualifier)
+            db.flush()
+
+            db_object = ObjectEntity(object_type_id=db_object_type.object_type_id)
+            db.add(db_object)
+            db.flush()
+
+            db_object_attribute_value = ObjectAttributeValueEntity(
+                object_attribute_id=db_object_attribute.object_attribute_id,
+                object_id=db_object.object_id,
+                timestamp=obj_in.objects[0].timestamp,
+                value=obj_in.objects[0].value,
+            )
+            db.add(db_object_attribute_value)
+            db.flush()
 
             db.commit()
             return

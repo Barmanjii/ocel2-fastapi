@@ -19,7 +19,7 @@ class Qualifier(BaseModel):
 class Event(BaseModel):
     timestamp: datetime
     attribute_values: List[EventAttributeValue]
-    relationships: List[Qualifier]
+    relationships_qualifer: List[Qualifier]
 
 
 class EventType(BaseModel):
