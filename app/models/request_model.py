@@ -1,47 +1,51 @@
 # Pydantic Import
 from datetime import datetime
-from pydantic import BaseModel
+
+# Main Python Import
 from typing import List
 
+# Local Python Import
+from app.utils.camel_model import CamelModel
 
-class EventAttribute(BaseModel):
+
+class EventAttribute(CamelModel):
     name: str
 
 
-class EventAttributeValue(BaseModel):
+class EventAttributeValue(CamelModel):
     value: dict
 
 
-class Qualifier(BaseModel):
+class Qualifier(CamelModel):
     value: dict
 
 
-class Event(BaseModel):
+class Event(CamelModel):
     timestamp: datetime
     attribute_values: List[EventAttributeValue]
     relationships_qualifer: List[Qualifier]
 
 
-class EventType(BaseModel):
+class EventType(CamelModel):
     name: str
     attributes: List[EventAttribute]
 
 
-class ObjectAttribute(BaseModel):
+class ObjectAttribute(CamelModel):
     name: str
 
 
-class ObjectType(BaseModel):
+class ObjectType(CamelModel):
     name: str
     attributes: List[ObjectAttribute]
 
 
-class ObjectAttributeValue(BaseModel):
+class ObjectAttributeValue(CamelModel):
     timestamp: datetime
     value: dict
 
 
-class RequestModel(BaseModel):
+class RequestModel(CamelModel):
     event_types: List[EventType]
     object_types: List[ObjectType]
     events: List[Event]
